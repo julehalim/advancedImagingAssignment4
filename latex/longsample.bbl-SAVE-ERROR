@@ -1,0 +1,657 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{artecleo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=07c215d5ad76248b4e209b3e1567c93f}{%
+           family={Artec3D},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{bibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorbibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authornamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Artec Leo}
+      \verb{urlraw}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+      \verb{url}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+    \endentry
+    \entry{scanningStandard}{misc}{}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Government of Western Australia}
+      \field{month}{8}
+      \field{title}{Asset and Geospatial Information Branch Survey and Mapping Section}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+    \endentry
+    \entry{cloudcomparesoftware}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
+           family={{CloudCompare}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{bibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorbibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authornamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{3}
+      \field{title}{CloudCompare 'Unified'}
+      \field{version}{2.13.1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+      \verb{url}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+    \endentry
+    \entry{conti2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d7b54f88fd46bc02b4f60210781656b1}{%
+           family={Conti},
+           familyi={C\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=27eabeb9a7c7a2a8af631aad07057b6a}{%
+           family={Pagliaricci},
+           familyi={P\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9af1a776e1c2738ecc6cea81ad17f468}{%
+           family={Bonora},
+           familyi={B\bibinitperiod},
+           given={Valentina},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=325e147bfc8d69f5c615d8919c7174ae}{%
+           family={Tucci},
+           familyi={T\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8608191fa7b3628631bb39b096b74ece}
+      \strng{fullhash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{fullhashraw}{14d88ae224aee92cce088cfdf5438335}
+      \strng{bibnamehash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authorbibnamehash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authornamehash}{8608191fa7b3628631bb39b096b74ece}
+      \strng{authorfullhash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authorfullhashraw}{14d88ae224aee92cce088cfdf5438335}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences}
+      \field{month}{02}
+      \field{title}{A COMPARISON BETWEEN TERRESTRIAL LASER SCANNING AND HAND-HELD MOBILE MAPPING FOR THE DOCUMENTATION OF BUILT HERITAGE}
+      \field{volume}{XLVIII-2/W4-2024}
+      \field{year}{2024}
+      \field{pages}{141\bibrangedash 147}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.5194/isprs-archives-XLVIII-2-W4-2024-141-2024
+      \endverb
+    \endentry
+    \entry{emesent}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a0a5e755cdf811cae8db75a644d0dd2e}{%
+           family={Emesent},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{fullhash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{fullhashraw}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{bibnamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorbibnamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authornamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorfullhash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorfullhashraw}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Emesent}
+      \field{month}{3}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://emesent.com/hovermap-series/
+      \endverb
+      \verb{url}
+      \verb https://emesent.com/hovermap-series/
+      \endverb
+    \endentry
+    \entry{FARO}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=696c0a26b06a07f9f8f6ad230fd3e8d6}{%
+           family={FARO},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{fullhash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{fullhashraw}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{bibnamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorbibnamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authornamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorfullhash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorfullhashraw}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{FARO}
+      \verb{urlraw}
+      \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
+      \endverb
+      \verb{url}
+      \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
+      \endverb
+    \endentry
+    \entry{girardeau2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0dfcfb91724c067f230efabe5f4458a2}{%
+           family={Girardeau-Montaut},
+           familyi={G\bibinithyphendelim M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{bibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorbibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authornamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{France: EDF R\&D Telecom ParisTech}
+      \field{number}{5}
+      \field{title}{CloudCompare}
+      \field{volume}{11}
+      \field{year}{2016}
+    \endentry
+    \entry{Levick2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=00ae2642000de8f9f761c94f6f8b55a0}{%
+           family={Levick},
+           familyi={L\bibinitperiod},
+           given={Shaun\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fe1d680423ad3f54a9dc9d1c9a950bd}{%
+           family={Whiteside},
+           familyi={W\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c67581e96ddc8988924ca419de22fe5}{%
+           family={Loewensteiner},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dbcc75ed60a8793ec9ffa15a70127194}{%
+           family={Rudge},
+           familyi={R\bibinitperiod},
+           given={Mitchel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e90c3126e615a847eb41ea049bac694}{%
+           family={Bartolo},
+           familyi={B\bibinitperiod},
+           given={Renee},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{fullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{fullhashraw}{602389532bccdebd7ef082136406f02c}
+      \strng{bibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorbibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authornamehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{authorfullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorfullhashraw}{602389532bccdebd7ef082136406f02c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2072-4292}
+      \field{journaltitle}{Remote Sensing}
+      \field{number}{2}
+      \field{title}{Leveraging TLS as a Calibration and Validation Tool for MLS and ULS Mapping of Savanna Structure and Biomass at Landscape-Scales}
+      \field{volume}{13}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.3390/rs13020257
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+    \endentry
+    \entry{wandinger2005}{inbook}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c9141f628df938d1850d03d687f80094}{%
+           family={Wandinger},
+           familyi={W\bibinitperiod},
+           given={Ulla},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c9141f628df938d1850d03d687f80094}
+      \strng{fullhash}{c9141f628df938d1850d03d687f80094}
+      \strng{fullhashraw}{c9141f628df938d1850d03d687f80094}
+      \strng{bibnamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorbibnamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authornamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorfullhash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorfullhashraw}{c9141f628df938d1850d03d687f80094}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Lidar: range-resolved optical remote sensing of the atmosphere}
+      \field{title}{Introduction to lidar}
+      \field{year}{2005}
+      \field{pages}{1\bibrangedash 18}
+      \range{pages}{18}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{artecleo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=07c215d5ad76248b4e209b3e1567c93f}{%
+           family={Artec3D},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{fullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{bibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorbibnamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authornamehash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhash}{07c215d5ad76248b4e209b3e1567c93f}
+      \strng{authorfullhashraw}{07c215d5ad76248b4e209b3e1567c93f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Artec Leo}
+      \verb{urlraw}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+      \verb{url}
+      \verb https://www.artec3d.com/portable-3d-scanners/artec-leo
+      \endverb
+    \endentry
+    \entry{scanningStandard}{misc}{}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Government of Western Australia}
+      \field{month}{8}
+      \field{title}{Asset and Geospatial Information Branch Survey and Mapping Section}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mainroads.wa.gov.au/globalassets/technical-commercial/technical-library/surveying-and-geospatial-services/engineering-surveys-guidelines/mobile-laser-scanning-standard.pdf
+      \endverb
+    \endentry
+    \entry{cloudcomparesoftware}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0aab69421f2ba47c4ba5a362d3291e4a}{%
+           family={{CloudCompare}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{fullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{bibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorbibnamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authornamehash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhash}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \strng{authorfullhashraw}{0aab69421f2ba47c4ba5a362d3291e4a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{3}
+      \field{title}{CloudCompare 'Unified'}
+      \field{version}{2.13.1}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+      \verb{url}
+      \verb https://cloudcompare-org.danielgm.net/release/
+      \endverb
+    \endentry
+    \entry{conti2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d7b54f88fd46bc02b4f60210781656b1}{%
+           family={Conti},
+           familyi={C\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=27eabeb9a7c7a2a8af631aad07057b6a}{%
+           family={Pagliaricci},
+           familyi={P\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9af1a776e1c2738ecc6cea81ad17f468}{%
+           family={Bonora},
+           familyi={B\bibinitperiod},
+           given={Valentina},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=325e147bfc8d69f5c615d8919c7174ae}{%
+           family={Tucci},
+           familyi={T\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8608191fa7b3628631bb39b096b74ece}
+      \strng{fullhash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{fullhashraw}{14d88ae224aee92cce088cfdf5438335}
+      \strng{bibnamehash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authorbibnamehash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authornamehash}{8608191fa7b3628631bb39b096b74ece}
+      \strng{authorfullhash}{14d88ae224aee92cce088cfdf5438335}
+      \strng{authorfullhashraw}{14d88ae224aee92cce088cfdf5438335}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences}
+      \field{month}{02}
+      \field{title}{A COMPARISON BETWEEN TERRESTRIAL LASER SCANNING AND HAND-HELD MOBILE MAPPING FOR THE DOCUMENTATION OF BUILT HERITAGE}
+      \field{volume}{XLVIII-2/W4-2024}
+      \field{year}{2024}
+      \field{pages}{141\bibrangedash 147}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.5194/isprs-archives-XLVIII-2-W4-2024-141-2024
+      \endverb
+    \endentry
+    \entry{emesent}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a0a5e755cdf811cae8db75a644d0dd2e}{%
+           family={Emesent},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{fullhash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{fullhashraw}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{bibnamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorbibnamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authornamehash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorfullhash}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \strng{authorfullhashraw}{a0a5e755cdf811cae8db75a644d0dd2e}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{Emesent}
+      \field{month}{3}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://emesent.com/hovermap-series/
+      \endverb
+      \verb{url}
+      \verb https://emesent.com/hovermap-series/
+      \endverb
+    \endentry
+    \entry{FARO}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=696c0a26b06a07f9f8f6ad230fd3e8d6}{%
+           family={FARO},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{fullhash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{fullhashraw}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{bibnamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorbibnamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authornamehash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorfullhash}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \strng{authorfullhashraw}{696c0a26b06a07f9f8f6ad230fd3e8d6}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{journaltitle}{FARO}
+      \verb{urlraw}
+      \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
+      \endverb
+      \verb{url}
+      \verb https://www.faro.com/en/Products/Hardware/Focus-Laser-Scanners
+      \endverb
+    \endentry
+    \entry{girardeau2016}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0dfcfb91724c067f230efabe5f4458a2}{%
+           family={Girardeau-Montaut},
+           familyi={G\bibinithyphendelim M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{fullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{bibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorbibnamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authornamehash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhash}{0dfcfb91724c067f230efabe5f4458a2}
+      \strng{authorfullhashraw}{0dfcfb91724c067f230efabe5f4458a2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{France: EDF R\&D Telecom ParisTech}
+      \field{number}{5}
+      \field{title}{CloudCompare}
+      \field{volume}{11}
+      \field{year}{2016}
+    \endentry
+    \entry{Levick2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=00ae2642000de8f9f761c94f6f8b55a0}{%
+           family={Levick},
+           familyi={L\bibinitperiod},
+           given={Shaun\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fe1d680423ad3f54a9dc9d1c9a950bd}{%
+           family={Whiteside},
+           familyi={W\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c67581e96ddc8988924ca419de22fe5}{%
+           family={Loewensteiner},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dbcc75ed60a8793ec9ffa15a70127194}{%
+           family={Rudge},
+           familyi={R\bibinitperiod},
+           given={Mitchel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e90c3126e615a847eb41ea049bac694}{%
+           family={Bartolo},
+           familyi={B\bibinitperiod},
+           given={Renee},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{fullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{fullhashraw}{602389532bccdebd7ef082136406f02c}
+      \strng{bibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorbibnamehash}{602389532bccdebd7ef082136406f02c}
+      \strng{authornamehash}{e0b0bf38e8381906e921b7e8ff0abaf3}
+      \strng{authorfullhash}{602389532bccdebd7ef082136406f02c}
+      \strng{authorfullhashraw}{602389532bccdebd7ef082136406f02c}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2072-4292}
+      \field{journaltitle}{Remote Sensing}
+      \field{number}{2}
+      \field{title}{Leveraging TLS as a Calibration and Validation Tool for MLS and ULS Mapping of Savanna Structure and Biomass at Landscape-Scales}
+      \field{volume}{13}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.3390/rs13020257
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2072-4292/13/2/257
+      \endverb
+    \endentry
+    \entry{wandinger2005}{inbook}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c9141f628df938d1850d03d687f80094}{%
+           family={Wandinger},
+           familyi={W\bibinitperiod},
+           given={Ulla},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{c9141f628df938d1850d03d687f80094}
+      \strng{fullhash}{c9141f628df938d1850d03d687f80094}
+      \strng{fullhashraw}{c9141f628df938d1850d03d687f80094}
+      \strng{bibnamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorbibnamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authornamehash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorfullhash}{c9141f628df938d1850d03d687f80094}
+      \strng{authorfullhashraw}{c9141f628df938d1850d03d687f80094}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Lidar: range-resolved optical remote sensing of the atmosphere}
+      \field{title}{Introduction to lidar}
+      \field{year}{2005}
+      \field{pages}{1\bibrangedash 18}
+      \range{pages}{18}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
