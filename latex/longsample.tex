@@ -80,24 +80,78 @@ The use of computer vision has been applied to wide range of different fields. F
   \label{fig:exampleDetection}
 \end{minipage}
 
-In this report, I aim to 
+Faster Recurrent Neural Network models (FasterRCNN model) are a form of neural network that can detect objects in images. The FasterRCNN model is based off \textcite{fasterRCNN}. It consists of two main components, the Region Proposal Network (RPN) and the FastRCNN. RPNs are a convolutional neural network, which are a form of neural network such as those described above, but are specialized in taking three dimensional data (such as images) as inputs. RPNs are further specialized to handle different schemas of different images. Figure \ref{fig:RPN} shows the different schemas that the RPN can handle, namely differing scales, differing filter sizes, and multiple references of the same image. 
 
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/detectionExample.png}
+  \captionof{figure}{Different Schemas that RPNs Are Adapted To(\textcite{fasterRCNN})}
+  \label{fig:RPN}
+\end{minipage}
+
+The other component, the FastRCNN (\textcite{fastRCNN}) is a neural network that has been shown to be much faster than other image detection neural networks. The main innovation that causes this increased detection speed is the use of of Regions of Interest (RoI). The RoI is defined with a four-tuple (r,c,h,w). The r and c specifies the top-left corner, while the h and w defines its height and width respectively. These tuples are then max-pooled to convert features inside regions of interest into a small feature map with fixed spatial size (e.g., height and width of 6 x 7). Figure \ref{fig:ROI} shows the overall architecture of the fastRCNN. As seen in this figure, the image is projected into an RoI format before being pooled and trained on a neural network.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/ROI.png}
+  \captionof{figure}{The FastRCNN Architecture, Including the Conversion of Images into ROI(\textcite{fastRCNN})}
+  \label{fig:ROI}
+\end{minipage}
+
+The FasterRCNN architecture has layers that provide output towards the RPN. This is then used to create a proposal, which basically proposes what sort of schema the image is using (see figure \ref{fig:RPN}). The image that is passed through the RPN is also used to create feature maps, which create is then passed to the the RoI pooling before being passed to a classifier. In this architecture, the RPN is performing the 'attention' task of FasterRCNN. Attention allows the model to incorporate sequential information into the model (e.g., in a picture of a man on a horse, the model is able to remember that the section of the image with a hat is in the upper-middle area of the whole image). Figure \ref{fig:fasterRCNNArchitecture} shows the entirety of the FasterRCNN architecture.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/fasterRCNN2.png}
+  \captionof{figure}{The FasterRCNN Architecture, Showing the Components of RPN and FastRCNN RoI (\textcite{fasterRCNN})}
+  \label{fig:fasterRCNNArchitecture}
+\end{minipage}
+
+The other model used in this report is the Resnet50 CNN model (\textcite{resnet50}). The Resnet50 CNN model's building block consists of a series of weight layers that have an relu activation function (an activation function converts the weights provided by the layer mapped to an output). Relu takes the maximum of two values and returns an output depending on the input (e.g., a relu that is max(0,x) and has a binary classification task to classify 0 and 1 would classify an output as 1 if x is greater than 0, and classify it as 0 if it is less than 0). Figure \ref{fig:resnet50} shows the building block layer of the Resnet50. The Resnet50 CNN consists of multiple of these layers along with other kinds of layers, one of which is the max-pool layer. This increased depth of representation is vital for visual recognition tasks, and this model is popular in many visual recognition tasks.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/6 ,width=\textwidth/4]{figures/resnet.png}
+  \captionof{figure}{The Resnet50 CNN Building Block (Layer)(\textcite{resnet50})}
+  \label{fig:resnet50}
+\end{minipage}
+
+In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to identify whether a parking slot is occupied or empty. Afterwards, parking slot delineation is done using FasterRCNN, which detects cars. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
+
+These results will then be evaluated by calculating recall, precision and accuracy. Afterwards, the object performance will be post-processed to improve the resulting classification. Visual inspection of the resulting bounding boxes will also be compared to the ground truth of where bounding boxes should be. Additional information is found in the methods and results section.
+
+\newpage
 
 \section{Methods and Results}
 
 \subsection{Visualizing Dataset}
+This step involves loading in the PKPlot and Barry Street annotated images. These annotations are bounding boxes that are manually set. Figure \ref{fig:datasetImages} shows the annotated images of the PKPlot (left) and Barry Street (right) datasets. The PKPlot dataset consists of over 695,000+ parking space images. For this report, only a segment of the total dataset was used.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/pkplot.png}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/barrystreet.png}
+  \captionof{figure}{Images of Annotated from the PKPlot Dataset (left) and Barry Street Dataset (right)}
+  \label{fig:datasetImages}
+\end{minipage}
+
+Figure \ref{fig:pkplot2} shows a sample empty slot and occupied slot found in the annotated PKPlot datasets.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/pkplot2.png}
+  \captionof{figure}{Sample Image of Empty (left) and Occupied (right) Slots of PKPlot, Sampled From 1500 Empty Spaces and 1500 Occupied Spaces}
+  \label{fig:pkplot2}
+\end{minipage}
+
 
 \subsection{Creating Car Detector}
+
+To create the car detector, the pre-trained Resnet50 CNN 
 
 \subsection{Automatic Delineation of Parking Spaces}
 
 \subsection{Evaluation}
 
-\subsection{Improving Accuracy}
+\subsection{Post-Processing Improvements}
 
 \section{Discussion}
 
-\subsection{Accuracy Evaluation}
+\subsection{Accuracy, Precision, and Recall Evaluation}
 
 \subsection{Improvement Based on Assumptions}
 
