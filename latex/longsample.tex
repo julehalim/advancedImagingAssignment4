@@ -37,6 +37,7 @@
 \usepackage{capt-of} % For captioning outside figures
 
 \usepackage{siunitx}
+\usepackage{matlab-prettifier}
 
 \usepackage{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
@@ -118,9 +119,18 @@ The other model used in this report is the Resnet50 CNN model (\textcite{resnet5
 
 \newpage
 
-In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to identify whether a parking slot is occupied or empty. Afterwards, parking slot delineation is done using FasterRCNN, which detects cars. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
+In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to create a classifier. Afterwards, parking slot delineation is done using FasterRCNN. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
 
-These results will then be evaluated by calculating recall, precision and accuracy. Afterwards, the object performance will be post-processed to improve the resulting classification. Visual inspection of the resulting bounding boxes will also be compared to the ground truth of where bounding boxes should be. Additional information is found in the methods and results section.
+These results will then be evaluated by calculating recall and precision. These metrics are calculated as 
+
+\[
+\text{Precision} = \frac{TP}{TP + FP} \quad \text{where } TP = \text{True Positives, } FP = \text{False Positives}
+\]
+\[
+\text{Recall} = \frac{TP}{TP + FN} \quad \text{where } TP = \text{True Positives, } FN = \text{False Negatives}
+\]
+
+Afterwards, the object performance will be post-processed to improve the resulting classification. Visual inspection of the resulting bounding boxes will also be compared to the ground truth of where bounding boxes should be. Additional information is found in the methods and results section. The entirety of the code is found in appendix D. However, relevant parts of the code will be written throughout the report.
 
 \newpage
 
@@ -197,9 +207,11 @@ To visualize the prediction results of the model, the predicted areas in which t
   \label{fig:bStreetPredictions}
 \end{minipage}
 
-\subsubsection{Improving Model Prediction Accuracy}
+\subsubsection{Improving Model Prediction}
 
-To improve the accuracy of the model to correctly identify more cars, the model was further trained on more frames from the Barry Street CCTV. The predicted bounding boxes on all the frames were clustered and drawn. Figure \ref{fig:clusterBox} shows the clusters represented as scatter points and bounding boxes.
+To improve the model to correctly identify more cars, the model was further trained on more frames from the Barry Street CCTV. The predicted bounding boxes on all the frames were clustered and drawn. Figure \ref{fig:clusterBox} shows the clusters represented as scatter points and bounding boxes.
+
+\newpage
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/clusterDot.png}
@@ -218,26 +230,568 @@ The bounding boxes (figure \ref{fig:clusterBox} (right)) then had their classifi
 
 \subsection{Evaluation}
 
-To perform evaluation on 
+\subsubsection{Evaluation Steps and Code}
+
+To perform evaluation on the resulting averaged predictions, the recall and precisions are calculated. The predicted data is structured as a dataset where each row consists of [x coordinates, y coordinates, length, width] of the bounding box. A ground truth dataset that contains the same structure as the predictions were given, and is used for the evaluation calculations described above. The evaluation steps and corresponding code are:
+
+1. Displaying the means of the bounding boxes described in figure \ref{fig:clusterAvg}.
+
+\begin{lstlisting}[]
+% x(1), y(2), length(3), width(4)
+disp(classifiedMean)
+\end{lstlisting}
+
+The resulting table displayed is shown in appendix A, along with additional mean calculations for the width and length. \newline
+
+2. Adjusting the x and y positions of the bounding boxes in (1) by a shift of 141 pixels along the x axis and 58 pixels on the y axis.
+
+\begin{lstlisting}[]
+
+adjustedClassifiedMean=classifiedMean
+adjustedClassifiedMean(:,1)=adjustedClassifiedMean(:,1)-141
+adjustedClassifiedMean(:,2)=adjustedClassifiedMean(:,2)-58
+
+\end{lstlisting}
+
+The resulting table of adjusted bounding box X and Y coordinates are shown in appendix B. \newline
+
+\newpage
+
+3. Create and input the table in a format for the 'evaluateDetectionPrecision' function.
+
+\begin{lstlisting}[]
+
+detectionResults = table('Size',[1,2], ...
+'VariableTypes',{'cell','cell'}, ...
+'VariableNames', {'Boxes','Scores'})
+detectionResults.Boxes{1} = adjustedClassifiedMean;
+detectionResults.Scores{1} = classifiedScoreMean;
+disp(detectionResults)
+
+\end{lstlisting}
+
+
+4. Load the ground truth data and create a table similar to step (3)
+
+\begin{lstlisting}[]
+
+load("FinalCode\GroundTruthBarryStreet.mat")
+groundTruthData = table('Size',[1,1], ...
+'VariableTypes',{'cell'}, ...
+'VariableNames', {'Boxes'})
+groundTruthData.Boxes{1} = ParkingSlots
+
+\end{lstlisting}
+
+5. Obtain the precision and recall of adjusted bounding boxes and plot the results.
+
+\begin{lstlisting}[]
+
+[averagePrecision, recall, precision] = 
+    evaluateDetectionPrecision(detectionResults, groundTruthData)
+figure;
+plot(recall, precision,'-x');
+xlabel('Recall');
+ylabel('Precision');
+title(['Average Precision = ' num2str(averagePrecision) ]);
+grid on;
+
+\end{lstlisting}
+
+\subsubsection{Evaluation Results}
+
+Table \ref{fig:adjustedPrecRec1} shows the resulting precision and recall calculations on the adjusted X and Y positions. 
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/avgPrecRec.png}
+  \captionof{figure}{Table of Precision, Average Precision, and Recall of Adjusted Bounding Box Predictions}
+  \label{fig:adjustedPrecRec1}
+\end{minipage}
+
+Figure \ref{fig:adjustedPrecRec2} shows the resulting plot of precision and recall. The average precision is 0.37099.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/graph.png}
+  \captionof{figure}{Plotted Recall vs Precision}
+  \label{fig:adjustedPrecRec2}
+\end{minipage}
+
+To obtain a visualization of the errors in the predictions, the ground truth bounding boxes are plotted agains the adjusted predictions.
+
+\begin{lstlisting}[]
+figure;
+xlim([0, 1100]);
+ylim([0, 650]);
+set(gca, 'YDir', 'reverse')
+hold on;
+
+for i = 1:size(adjustedClassifiedMean,1)
+    rectangle('Position', adjustedClassifiedMean(i,:), 'EdgeColor',
+     'black', 'LineWidth', 1);
+end
+
+for i = 1:size(ParkingSlots,1)
+    rectangle('Position', ParkingSlots(i,:), 'EdgeColor', 'r', 
+    'LineWidth', 1);
+end
+hold off;
+\end{lstlisting}
+
+Figure \ref{fig:unimprovedBoxes} shows the plotted bounding boxes of the predicted bounding boxes (black) and the ground truth boxes (red). As this figure shows, the predicted areas are very different from the ground truth boxes. To improve this, post-processing improvements will be done in the next section to improve the precision and recall of the predictions by adjusting the predicted bounding boxes to more accurately match the ground truth.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/plottedBoxesUnimproved.png}
+  \captionof{figure}{Plotted Bounding Boxes of Unimproved Predictions (black) Plotted Against Ground Truth Bounding Boxes (red)}
+  \label{fig:unimprovedBoxes}
+\end{minipage}
 
 \subsection{Post-Processing Improvements}
+
+\subsubsection{Plotting Bounding Box Sizes}
+
+To visualize the different bounding box sizes, the predicted bounding boxes are plotted. To ensure that the orientation of each bounding boxes are the same, the aspect ratios of each box was calculated. If it was greater than 1, the x and y coordinates are swapped, along with their widths and lengths. This effectively orients each box to be 'vertically' oriented (the length is shorter than the width for each box). The code to plot the boxes and the swaps are shown below. 
+
+\begin{lstlisting}[]
+
+figure;
+hold on;
+axis equal;
+xlim([0, 200]);
+ylim([0, 200]);
+xlabel('Width of parking slots in pixels');
+ylabel('Length of parking slots in pixels');
+set(gca, 'XTick', [], 'YTick', []);
+
+%create a copy of adjustedClassifiedMeans before rotation for next task
+unrotatedClassifiedMeans=adjustedClassifiedMean
+
+for i = 1:size(adjustedClassifiedMean, 1)
+    box =adjustedClassifiedMean(i, :);
+    aspectRatio = adjustedClassifiedMean(i,4) /adjustedClassifiedMean(i,3);
+    if aspectRatio<1
+        temp = adjustedClassifiedMean(i,3);
+        adjustedClassifiedMean(i,3) =adjustedClassifiedMean(i,4);
+        adjustedClassifiedMean(i,4) = temp;
+        
+        temp2=adjustedClassifiedMean(i,1);
+        adjustedClassifiedMean(i,1)=adjustedClassifiedMean(i,2);
+        adjustedClassifiedMean(i,2)=temp2;
+        rectangle('Position', [50, 0, adjustedClassifiedMean(i,3), adjustedClassifiedMean(i,4)], 'EdgeColor', 'black');
+    else
+        rectangle('Position', [50, 0, adjustedClassifiedMean(i,3), adjustedClassifiedMean(i,4)], 'EdgeColor', 'black');
+    end
+      
+end
+  
+  hold off;
+\end{lstlisting}
+
+Figure \ref{fig:plottedRotatedBox} shows the resulting bounding box plots. As seen from this figure, there are a few bounding boxes that are significantly larger than the others. Observing figure \ref{fig:unimprovedBoxes}, these two appears to be the two large boxes on the bottom left of the image. 
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/bboxPlot.png}
+  \captionof{figure}{Plotted Bounding Boxes With Vertical Orientation}
+  \label{fig:plottedRotatedBox}
+\end{minipage}
+
+The average of these box widths and lengths are calculated to be used to post-process the predicted bounding boxes to improve the predictions.
+
+\begin{lstlisting}[]
+averageLength = mean(adjustedClassifiedMean(:,4));
+averageWidth = mean(adjustedClassifiedMean(:,3));
+disp(averageLength)
+disp(averageWidth)
+\end{lstlisting}
+
+The resulting average length is calculated as 79.8080 pixels and an average width of 60.3352 pixels. The screenshot of the output is in appendix C. These lengths will be used to adjust the predicted bounding box sizes in the next section. 
+
+\subsubsection{Post-Process to Improve Predicting Bounding Box}
+
+To improve predicted bounding boxes, a few assumptions was made. 
+
+1. The width and length of each parking slot is constant, thus the average length and width calculated above will be used as the width and length of each parking space.
+
+2. The car will take 80\% of the parking space, so the detections, or the predicted bounding box length, will be extended by 25\%.
+
+The code used is based on the pseudocode provided.
+
+\begin{lstlisting}[]
+
+newBoxes = zeros(size(unrotatedClassifiedMeans));
+aspectMore1=zeros(size(unrotatedClassifiedMeans));
+aspectLess1=zeros(size(unrotatedClassifiedMeans));
+
+% x,y, width, length
+for i = 1:size(unrotatedClassifiedMeans, 1)
+    box = unrotatedClassifiedMeans(i, :);
+    aspectRatio = box(4) / box(3);
+    if aspectRatio > 1 % for vertically longer boxes
+        deltaX = (box(4) - (averageLength * 1.25));
+        deltaY = (box(3) - averageWidth);
+        newBoxes(i, 1) = box(1) + (deltaX / 2);
+        newBoxes(i, 2) = box(2) + (deltaY / 2);
+        newBoxes(i, 3) = averageWidth;
+        newBoxes(i, 4) = averageLength * 1.25;
+
+        aspectMore1(i, 1) = box(1) + (deltaX / 2);
+        aspectMore1(i, 2) = box(2) + (deltaY / 2);
+        aspectMore1(i, 3) = averageWidth ;
+        aspectMore1(i, 4) = averageLength * 1.25;
+    else % for horizontally longer boxes
+        deltaX = (box(4) - averageWidth);
+        deltaY = (box(3) - (averageLength * 1.25));
+        newBoxes(i, 1) = box(1) + (deltaX / 2);
+        newBoxes(i, 2) = box(2) + (deltaY / 2);
+        newBoxes(i, 3) = averageLength * 1.25;
+        newBoxes(i, 4) = averageWidth;
+
+        aspectLess1(i, 1) = box(1) + (deltaX / 2);
+        aspectLess1(i, 2) = box(2) + (deltaY / 2);
+        aspectLess1(i, 3) = averageLength * 1.25;
+        aspectLess1(i, 4) = averageWidth;
+    end
+end
+
+\end{lstlisting}
+
+The resulting new boxes were then plotted, with predicted boxes with an aspect ratio greater than 1 being colored green, aspect ratios being less than 1 colored cyan, and the ground truth bounding boxes being colored red. Figure \ref{fig:bboxplot1} shows this plot.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/finalBbox1.png}
+  \captionof{figure}{Predicted Bounding Boxes Plotted With Ground Truth}
+  \label{fig:bboxplot1}
+\end{minipage}
+
+A second plot was created without differing colors for different aspect ratios. Figure \ref{fig:bboxplot2} shows this plot.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/bboxplot2.png}
+  \captionof{figure}{Predicted Bounding Boxes Plotted With Ground Truth Without Differentiation of Aspect Ratios}
+  \label{fig:bboxplot2}
+\end{minipage}
+
+The recall and precisions of the new post-processed boxes were then plotted in a similar way to the recall and precision plot of the initial predicted bounding boxes. Table \ref{fig:pProcessedPrecRec} shows the resulting precisions, recall, and average precisions of the post-processed predicted bounding boxes.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/finalPrecRec.png}
+  \captionof{figure}{Table of Precision, Average Precision, and Recall of Adjusted and Post-Processed Bounding Box Predictions}
+  \label{fig:pProcessedPrecRec}
+\end{minipage}
+
+After the precisions and recalls were calculated, they are plotted using the following code.
+
+\newpage
+
+\begin{lstlisting}[]
+
+newDetectionResults = detectionResults;
+newDetectionResults.Boxes{1} = newBoxes;
+
+[newAveragePrecision, newRecall, newPrecision] = evaluateDetectionPrecision
+(newDetectionResults, groundTruthData);
+
+figure;
+plot(newRecall, newPrecision,'-x');
+xlabel('Recall');
+ylabel('Precision');
+title(['Average Precision = ' num2str(newAveragePrecision) ]);
+grid on;
+set(gca, 'YDir', 'reverse');
+
+\end{lstlisting}
+
+The resulting plot is shown in figure \ref{fig:finalPlot}.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/finalPrecRecPlot.png}
+  \captionof{figure}{Plotted Recall vs Precision for Post-Processed Bounding Boxes}
+  \label{fig:finalPlot}
+\end{minipage}
+
+\newpage
 
 \section{Discussion}
 
 \subsection{Accuracy, Precision, and Recall Evaluation}
 
+\subsubsection{Car Detection With Resnet50 CNN Model}
+
+The accuracy of the car detector model with the Resnet50 CNN model is highly accurate, as shown in figure \ref{fig:modelTraining}, showing that the model has high accuracy and low loss on both the training and development dataset. Furthermore, it is also shown to be able to generalize well to unseen datasets, as seen in the high accuracy in figure \ref{fig:confMatrix}.
+
+\subsubsection{Parking Spot Delineation With FasterRCNN Model}
+
+As seen in figure \ref{fig:modelIterations}, the accuracy in the training was quite high, with RPN and the overall model obtaining near perfect accuracy over a few thousand iterations. However, as shown in figure \ref{fig:bStreetPredictions}, it is not able to generalize very well towards unseen datasets, where it was only able to detect 17 of the 28 annotated parking spaces. Adding on more data by providing various other CCTV images of Barry Street did enhance the accuracy (see figure \ref{fig:clusterBox}), where the model was able to detect 26 of the 28 spaces.
+
+While detection accuracy after providing the model with more data is better, the quality of the bounding boxes are not very accurate to the ground truth (see figure \ref{fig:unimprovedBoxes}). The resulting average precision was approximately 37\%, meaning that of all the instances the model predicted as a parking spot, about 37\% had correct bounding box predictions. The recall also tend to range from 3.5\% to 57\%, which means that about 3.5\% to 57\% of the specific bounding box were successfully detected as parking spots, while missing the remaining percentages for that specific bounding box. As the recall increases, the general trend is that there is an increase in precision as well, with only some points having decreased precision.
+
+To improve the precision and recall of each bounding boxes, the improvements were made. The results will be discussed in the following section.
+
 \subsection{Improvement Based on Assumptions}
+The average precision decreased by about 17\%, which shows that the post-processed bounding boxes more accurately fit the annotated ground truth. The general trend of recall vs precision is also present in the post-processed plot (see figure \ref{fig:finalPlot}). However, the range of recall decreased compared to the pre-processed predictions. 
+
+To further investigate how the predicted boxes compare to the ground truth, figures \ref{fig:bboxplot1} and \ref{fig:bboxplot2} was created. In contrast to figure \ref{fig:unimprovedBoxes}, the post-processed boxes more closely resemble the ground truths. However, seeing figure \ref{fig:bboxplot1} shows that not all the parking spot orientations were identified. For example, the blue boxes on the left are supposed to be vertically longer, but the aspect ratio for these boxes were more than 1. This results in these boxes being deviated from the ground truth boxes. Horizontally oriented predicted boxes mostly have accurate sizes where the ground truth is also horizontally oriented, mostly on the first row. However, the bottom row horizontal boxes are mostly too small compared to the ground truth, with the exception of the bottom left parking slot. This could be due to how the parking slot in this area being cut off, as seen in figure \ref{fig:bStreetPredictions}.
+
+For the vertically oriented predicted boxes, it all the identified boxes as having lower than 1 aspect ratios are correct, meaning that there are no wrong predictions in terms of the identified orientations. However, there is a significant deviation in the x and y coordinates, which causes the predicted boxes to be slightly offset. This would also contribute to the final precision and recall. Table \ref{fig:finalConfMatrix} shows the confusion matrix of orientation identification. Approximately 84.65\% of the orientations were correctly identified and as described above, vertical orientations are more accurate.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[width=\textwidth/1]{figures/finalConfMatrix.png}
+  \captionof{figure}{Confusion Matrix of Correctly Predicted Orientations}
+  \label{fig:finalConfMatrix}
+\end{minipage}
+
+Overall, the improvement through post-processing increaases the quality of predictions, through correctly identifiying orientations and adjusting the predicted bounding box sizes to be more accurate. However, there are still some problems with the assumptions. For example, the bottom row of Barry Street has a much larger parking spot thatn other areas, which does cause increased errors. Furthermore, the intial predictions are also influential in identifying the correct aspect ratio of each bounding box. Nevertheless, using the assumptions and post-processing based on these assumptions does increase the average precision of the predictions.
 
 \subsection{Challenges and Shortcomings}
 
+One challenge in this report is correctly identifying aspect ratios. As stated above, due to the way the predictions were used in post-processing, the aspect ratios for some bounding boxes were not correctly identified. Generalizability is a core aspect in model training, and if a model was overfitted on certain datasets, they might not generalize well to unseen images. As such, although the assumptions and post-processing did help to improve some evaluation metrics, further post-processing could run the risk of overfitting. For example, if each bounding box was slowly shifted into its correct space and orientation by checking it against its corresponding ground truth box. This would greatly improve the metrics, but would also be an issue of overfitting.
+
+Another challenge is interpreting the provided pseudocode as it was quite difficult to visualize the change. However, once it was understood that it was meant to account for horizontal and vertical orientations of parking, the resulting transformations were easier to visualize. 
+
 \subsection{Scopes of Improvement}
+
+To improve the report, the trained model could include training on the parking space orientations as an output. By directly training the output class of orientation itself, this could improve accuracy in post-processing. This would be in contrast to what this report has done, which is to calculate the aspect ratios based on predicted bounding boxes, which could cause errors to propagate. For instance, as described above, vertically oriented ground truth boxes are sometimes identified as horizontally oriented, which is an example of the error propagation (e.g., because the bounding box was more horizontal, the post-processing step also assumes it is horizontal).
+
+Another improvement could be to have more sophisticated assumptions. The provided assumptions are quite general, but as discussed above, does not apply to all parking spaces. Certain additional assumptions such as middle is always vertically oriented or the bottom row is always wider could further improve the evaluation metrics. However, this may not always be desired as it could cause overfitting. However, if the goal was to obtain accurate predictions for one image to be used for some other purpose, this could be beneficial.
+
+One final improvement is that there could be more sophisticated models, in which post-processed models could be fed back into the model to increase the generalizability of the model. However, designing such a model is outside the scope of this report and is a large project to undertake by itself.
+
+\newpage
 
 \section{Conclusions and Future Directions}
 
-\section{Appendix}
+In conclusion, I have successfully investigated how neural networks and machine learning are applied in the field of computer vision. I have used pre-trained Restnet50 CNN and FasterRCNN models to perform car detection and delineation respectively. Furthermore, the performance of these models have been evaluated and visualized. After training, the FasterRCNN model was further fine-tuned in two ways. First was by providing it more data and averaging the predicted bounding boxes. The second was post-processing by using certain assumptions based on averaging length and width of all the bounding boxes. The results of post-processing was that the average precision decreased by about 17\%, and visual inspection of the plotted bounding boxes as seen in figure \ref{fig:bboxplot1} and \ref{fig:bboxplot2} shows that there was an improvement in the predicted bounding box areas to be closer to the ground truth. However, there are still issues in the predictions of bounding boxes due to two main points, that the assumption does not hold for all parking spaces and that errors are propagated from initial predictions due to the calculations of aspect ratios.
+
+Future work can build on this report by implementing some of the suggestions in the scope of improvement section. While some of these are difficult and would require a large amount of work, such as the creation of a more sophisitcated model, some others can greatly improve the evaluation metrics, either by increasing assumptions or attempting to overfit the predictions based on the ground truth. However, these should be carefully considered on whether or not the risk of overfitting is suitable for the purposes of the desired study aim.
+
+Nevertheless, this report has implemented all the steps provided in the specification and has achieved the aim of improving predictions provided by the provided models using various procedures. 
+
+\newpage
 
 \printbibliography
 
+\newpage
+\section{Appendix}
+
+\noindent Appendix A - Table of the averaged bounding box means along with the average width and length.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/originalMeans.png}
+  \captionof{figure}{Original Unadjusted Bounding Box Means}
+  \label{fig:originalMeans}
+\end{minipage}
+
+\newpage
+
+\noindent Appendix B - Table of adjusted bounding box means along with the average width and length
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/adjustedBoxes.png}
+  \captionof{figure}{Adjusted Bounding Box Means}
+  \label{fig:adjustedMeans}
+\end{minipage}
+
+\newpage
+
+\noindent Appendix C - Screenshot of the average width and length of rotated and adjusted predicted bounding boxes
+
+\begin{minipage}{\linewidth}
+  \includegraphics[]{figures/ssAverage.png}
+  \captionof{figure}{Adjusted Predicted Bounding Boxes Width and Length}
+  \label{fig:averageLW}
+\end{minipage}
+
+\newpage
+
+\noindent Appendix D - Complete Code Used For Tasks 4 and 5 of the Assignment
+\begin{lstlisting}[]
+
+% Task 4
+
+% x(1), y(2), length(3), width(4)
+disp(classifiedMean)
+adjustedClassifiedMean=classifiedMean
+adjustedClassifiedMean(:,1)=adjustedClassifiedMean(:,1)-141
+adjustedClassifiedMean(:,2)=adjustedClassifiedMean(:,2)-58
+
+detectionResults = table('Size',[1,2], ...
+    'VariableTypes',{'cell','cell'}, ...
+    'VariableNames', {'Boxes','Scores'})
+detectionResults.Boxes{1} = adjustedClassifiedMean;
+detectionResults.Scores{1} = classifiedScoreMean;
+disp(detectionResults)
+load("FinalCode\GroundTruthBarryStreet.mat")
+groundTruthData = table('Size',[1,1], ...
+    'VariableTypes',{'cell'}, ...
+    'VariableNames', {'Boxes'})
+groundTruthData.Boxes{1} = ParkingSlots
+[averagePrecision, recall, precision] = evaluateDetectionPrecision
+(detectionResults, groundTruthData)
+figure;
+plot(recall, precision,'-x');
+xlabel('Recall');
+ylabel('Precision');
+title(['Average Precision = ' num2str(averagePrecision) ]);
+grid on;
+figure;
+xlim([0, 1100]);
+ylim([0, 650]);
+set(gca, 'YDir', 'reverse')
+hold on;
+
+for i = 1:size(adjustedClassifiedMean,1)
+    rectangle('Position', adjustedClassifiedMean(i,:), 'EdgeColor',
+     'black', 'LineWidth', 1);
+end
+
+for i = 1:size(ParkingSlots,1)
+    rectangle('Position', ParkingSlots(i,:), 'EdgeColor', 'r', 'LineWidth',
+     1);
+end
+hold off;
+
+
+%Task 5
+
+figure;
+hold on;
+axis equal;
+xlim([0, 200]);
+ylim([0, 200]);
+xlabel('Width of parking slots in pixels');
+ylabel('Length of parking slots in pixels');
+set(gca, 'XTick', [], 'YTick', []);
+
+%create a copy of adjustedClassifiedMeans before rotation for next task
+unrotatedClassifiedMeans=adjustedClassifiedMean
+
+for i = 1:size(adjustedClassifiedMean, 1)
+    box =adjustedClassifiedMean(i, :);
+    aspectRatio = adjustedClassifiedMean(i,4) /adjustedClassifiedMean(i,3);
+    if aspectRatio<1
+        temp = adjustedClassifiedMean(i,3);
+        adjustedClassifiedMean(i,3) =adjustedClassifiedMean(i,4);
+        adjustedClassifiedMean(i,4) = temp;
+        
+        temp2=adjustedClassifiedMean(i,1);
+        adjustedClassifiedMean(i,1)=adjustedClassifiedMean(i,2);
+        adjustedClassifiedMean(i,2)=temp2;
+        rectangle('Position', [50, 0, adjustedClassifiedMean(i,3),
+         adjustedClassifiedMean(i,4)], 'EdgeColor', 'black');
+    else
+        rectangle('Position', [50, 0, adjustedClassifiedMean(i,3),
+         adjustedClassifiedMean(i,4)], 'EdgeColor', 'black');
+    end
+      
+end
+
+hold off;
+averageLength = mean(adjustedClassifiedMean(:,4));
+averageWidth = mean(adjustedClassifiedMean(:,3));
+disp(averageLength)
+disp(averageWidth)
+
+newBoxes = zeros(size(unrotatedClassifiedMeans));
+aspectMore1=zeros(size(unrotatedClassifiedMeans));
+aspectLess1=zeros(size(unrotatedClassifiedMeans));
+
+% x,y, width, length
+for i = 1:size(unrotatedClassifiedMeans, 1)
+    box = unrotatedClassifiedMeans(i, :);
+    aspectRatio = box(4) / box(3);
+    if aspectRatio > 1 % for vertically longer boxes
+        deltaX = (box(4) - (averageLength * 1.25));
+        deltaY = (box(3) - averageWidth);
+        newBoxes(i, 1) = box(1) + (deltaX / 2);
+        newBoxes(i, 2) = box(2) + (deltaY / 2);
+        newBoxes(i, 3) = averageWidth;
+        newBoxes(i, 4) = averageLength * 1.25;
+
+        aspectMore1(i, 1) = box(1) + (deltaX / 2);
+        aspectMore1(i, 2) = box(2) + (deltaY / 2);
+        aspectMore1(i, 3) = averageWidth ;
+        aspectMore1(i, 4) = averageLength * 1.25;
+    else % for horizontally longer boxes
+        deltaX = (box(4) - averageWidth);
+        deltaY = (box(3) - (averageLength * 1.25));
+        newBoxes(i, 1) = box(1) + (deltaX / 2);
+        newBoxes(i, 2) = box(2) + (deltaY / 2);
+        newBoxes(i, 3) = averageLength * 1.25;
+        newBoxes(i, 4) = averageWidth;
+
+        aspectLess1(i, 1) = box(1) + (deltaX / 2);
+        aspectLess1(i, 2) = box(2) + (deltaY / 2);
+        aspectLess1(i, 3) = averageLength * 1.25;
+        aspectLess1(i, 4) = averageWidth;
+    end
+end
+
+figure;
+xlim([0, 1100]);
+ylim([0, 650]);
+set(gca, 'YDir', 'reverse')
+hold on;
+
+
+for i = 1:size(newBoxes,1)
+    rectangle('Position', aspectMore1(i,:), 'EdgeColor',
+     'g', 'LineWidth', 1);
+end
+
+for i = 1:size(newBoxes,1)
+    rectangle('Position', aspectLess1(i,:), 'EdgeColor',
+     'blue', 'LineWidth', 1);
+end
+
+for i = 1:size(ParkingSlots,1)
+    rectangle('Position', ParkingSlots(i,:), 'EdgeColor',
+     'r', 'LineWidth', 1);
+end
+hold off;
+
+figure;
+xlim([0, 1100]);
+ylim([0, 650]);
+set(gca, 'YDir', 'reverse')
+hold on;
+
+
+for i = 1:size(newBoxes,1)
+    rectangle('Position', newBoxes(i,:), 'EdgeColor', 'black',
+     'LineWidth', 1);
+end
+
+for i = 1:size(ParkingSlots,1)
+    rectangle('Position', ParkingSlots(i,:), 'EdgeColor', 'r',
+     'LineWidth', 1);
+end
+hold off;
+
+
+newDetectionResults = detectionResults;
+newDetectionResults.Boxes{1} = newBoxes;
+
+[newAveragePrecision, newRecall, newPrecision] = evaluateDetectionPrecision
+(newDetectionResults,groundTruthData);
+
+figure;
+plot(newRecall, newPrecision,'-x');
+xlabel('Recall');
+ylabel('Precision');
+title(['Average Precision = ' num2str(newAveragePrecision) ]);
+grid on;
+set(gca, 'YDir', 'reverse');
+
+\end{lstlisting}
 
 \end{document}
 

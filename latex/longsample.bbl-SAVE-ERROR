@@ -222,83 +222,23 @@
       \verb https://www.nature.com/articles/s41746-020-00376-2
       \endverb
     \endentry
-    \entry{GeneMola2019}{article}{}{}
-      \name{author}{11}{}{%
-        {{un=0,uniquepart=base,hash=543ab881010f5d45d024ae0f83b493c1}{%
-           family={Gené-Mola},
-           familyi={G\bibinithyphendelim M\bibinitperiod},
-           given={Jordi},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=d56632db86690a0e4ed3ffd58185c853}{%
-           family={Gregorio},
+    \entry{fastRCNN}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
            familyi={G\bibinitperiod},
-           given={Eduard},
-           giveni={E\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=6de3d10921bd6c06ab87eed3199d020b}{%
-           family={Guevara},
-           familyi={G\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=b57a15c39b657fb9afa8c678ae9c80c7}{%
-           family={Auat},
-           familyi={A\bibinitperiod},
-           given={Fernando},
-           giveni={F\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=94ecc15359bd2e90c7421fcd8fe132bf}{%
-           family={Sanz-Cortiella},
-           familyi={S\bibinithyphendelim C\bibinitperiod},
-           given={Ricardo},
+           given={Ross},
            giveni={R\bibinitperiod},
            givenun=0}}%
-        {{un=0,uniquepart=base,hash=432e576dcc312b49eb1fe3b5ac13bc21}{%
-           family={Escolà},
-           familyi={E\bibinitperiod},
-           given={Alexandre},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=3ef4582e988a666ffc8e9162f5f58198}{%
-           family={Llorens},
-           familyi={L\bibinitperiod},
-           given={Jordi},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=2b167263819c3161d513311dd3b6dd76}{%
-           family={Morros},
-           familyi={M\bibinitperiod},
-           given={Josep-Ramon},
-           giveni={J\bibinithyphendelim R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=fbe6654ad226692d5fa3bfe4749c7bfd}{%
-           family={Ruiz-Hidalgo},
-           familyi={R\bibinithyphendelim H\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=63bab7f913dce3391e50cf90b4e6e407}{%
-           family={Vilaplana},
-           familyi={V\bibinitperiod},
-           given={Verónica},
-           giveni={V\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=d885950a48e6b014bf51a10e5619b903}{%
-           family={Rosell-Polo},
-           familyi={R\bibinithyphendelim P\bibinitperiod},
-           given={Joan\bibnamedelima R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
       }
-      \strng{namehash}{9b56b831cc0d0ec340382491b9a6699c}
-      \strng{fullhash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{fullhashraw}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{bibnamehash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authorbibnamehash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authornamehash}{9b56b831cc0d0ec340382491b9a6699c}
-      \strng{authorfullhash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authorfullhashraw}{3c4ed48bfca84aa7de6ecb3c9d00d631}
+      \strng{namehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{fullhash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{fullhashraw}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{bibnamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorbibnamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authornamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorfullhash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorfullhashraw}{bd5dadbe57bedc5957c19a3154c4d424}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{extradatescope}{labelyear}
@@ -306,21 +246,64 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{1537-5110}
-      \field{journaltitle}{Biosystems Engineering}
-      \field{title}{Fruit detection in an apple orchard using a mobile terrestrial laser scanner}
-      \field{volume}{187}
-      \field{year}{2019}
-      \field{pages}{171\bibrangedash 184}
-      \range{pages}{14}
+      \field{journaltitle}{2015 IEEE International Conference on Computer Vision (ICCV)}
+      \field{title}{Fast R-CNN}
+      \field{year}{2015}
+      \field{pages}{1440\bibrangedash 1448}
+      \range{pages}{9}
       \verb{doi}
-      \verb https://doi.org/10.1016/j.biosystemseng.2019.08.017
+      \verb 10.1109/ICCV.2015.169
       \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S1537511019308128
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S1537511019308128
+      \keyw{Training;Proposals;Feature extraction;Object detection;Pipelines;Computer architecture;Open source software}
+    \endentry
+    \entry{resnet50}{misc}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{fullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorbibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorfullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Deep Residual Learning for Image Recognition}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1512.03385
       \endverb
     \endentry
     \entry{KHAN20201444}{article}{}{}
@@ -726,83 +709,23 @@
       \verb https://www.nature.com/articles/s41746-020-00376-2
       \endverb
     \endentry
-    \entry{GeneMola2019}{article}{}{}
-      \name{author}{11}{}{%
-        {{un=0,uniquepart=base,hash=543ab881010f5d45d024ae0f83b493c1}{%
-           family={Gené-Mola},
-           familyi={G\bibinithyphendelim M\bibinitperiod},
-           given={Jordi},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=d56632db86690a0e4ed3ffd58185c853}{%
-           family={Gregorio},
+    \entry{fastRCNN}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
            familyi={G\bibinitperiod},
-           given={Eduard},
-           giveni={E\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=6de3d10921bd6c06ab87eed3199d020b}{%
-           family={Guevara},
-           familyi={G\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=b57a15c39b657fb9afa8c678ae9c80c7}{%
-           family={Auat},
-           familyi={A\bibinitperiod},
-           given={Fernando},
-           giveni={F\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=94ecc15359bd2e90c7421fcd8fe132bf}{%
-           family={Sanz-Cortiella},
-           familyi={S\bibinithyphendelim C\bibinitperiod},
-           given={Ricardo},
+           given={Ross},
            giveni={R\bibinitperiod},
            givenun=0}}%
-        {{un=0,uniquepart=base,hash=432e576dcc312b49eb1fe3b5ac13bc21}{%
-           family={Escolà},
-           familyi={E\bibinitperiod},
-           given={Alexandre},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=3ef4582e988a666ffc8e9162f5f58198}{%
-           family={Llorens},
-           familyi={L\bibinitperiod},
-           given={Jordi},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=2b167263819c3161d513311dd3b6dd76}{%
-           family={Morros},
-           familyi={M\bibinitperiod},
-           given={Josep-Ramon},
-           giveni={J\bibinithyphendelim R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=fbe6654ad226692d5fa3bfe4749c7bfd}{%
-           family={Ruiz-Hidalgo},
-           familyi={R\bibinithyphendelim H\bibinitperiod},
-           given={Javier},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=63bab7f913dce3391e50cf90b4e6e407}{%
-           family={Vilaplana},
-           familyi={V\bibinitperiod},
-           given={Verónica},
-           giveni={V\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=d885950a48e6b014bf51a10e5619b903}{%
-           family={Rosell-Polo},
-           familyi={R\bibinithyphendelim P\bibinitperiod},
-           given={Joan\bibnamedelima R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
       }
-      \strng{namehash}{9b56b831cc0d0ec340382491b9a6699c}
-      \strng{fullhash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{fullhashraw}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{bibnamehash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authorbibnamehash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authornamehash}{9b56b831cc0d0ec340382491b9a6699c}
-      \strng{authorfullhash}{3c4ed48bfca84aa7de6ecb3c9d00d631}
-      \strng{authorfullhashraw}{3c4ed48bfca84aa7de6ecb3c9d00d631}
+      \strng{namehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{fullhash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{fullhashraw}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{bibnamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorbibnamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authornamehash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorfullhash}{bd5dadbe57bedc5957c19a3154c4d424}
+      \strng{authorfullhashraw}{bd5dadbe57bedc5957c19a3154c4d424}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{extradatescope}{labelyear}
@@ -810,21 +733,64 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{1537-5110}
-      \field{journaltitle}{Biosystems Engineering}
-      \field{title}{Fruit detection in an apple orchard using a mobile terrestrial laser scanner}
-      \field{volume}{187}
-      \field{year}{2019}
-      \field{pages}{171\bibrangedash 184}
-      \range{pages}{14}
+      \field{journaltitle}{2015 IEEE International Conference on Computer Vision (ICCV)}
+      \field{title}{Fast R-CNN}
+      \field{year}{2015}
+      \field{pages}{1440\bibrangedash 1448}
+      \range{pages}{9}
       \verb{doi}
-      \verb https://doi.org/10.1016/j.biosystemseng.2019.08.017
+      \verb 10.1109/ICCV.2015.169
       \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S1537511019308128
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S1537511019308128
+      \keyw{Training;Proposals;Feature extraction;Object detection;Pipelines;Computer architecture;Open source software}
+    \endentry
+    \entry{resnet50}{misc}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{fullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorbibnamehash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorfullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Deep Residual Learning for Image Recognition}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1512.03385
       \endverb
     \endentry
     \entry{KHAN20201444}{article}{}{}
