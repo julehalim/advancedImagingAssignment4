@@ -88,6 +88,8 @@ Faster Recurrent Neural Network models (FasterRCNN model) are a form of neural n
   \label{fig:RPN}
 \end{minipage}
 
+\newpage
+
 The other component, the FastRCNN (\textcite{fastRCNN}) is a neural network that has been shown to be much faster than other image detection neural networks. The main innovation that causes this increased detection speed is the use of of Regions of Interest (RoI). The RoI is defined with a four-tuple (r,c,h,w). The r and c specifies the top-left corner, while the h and w defines its height and width respectively. These tuples are then max-pooled to convert features inside regions of interest into a small feature map with fixed spatial size (e.g., height and width of 6 x 7). Figure \ref{fig:ROI} shows the overall architecture of the fastRCNN. As seen in this figure, the image is projected into an RoI format before being pooled and trained on a neural network.
 
 \begin{minipage}{\linewidth}
@@ -97,6 +99,8 @@ The other component, the FastRCNN (\textcite{fastRCNN}) is a neural network that
 \end{minipage}
 
 The FasterRCNN architecture has layers that provide output towards the RPN. This is then used to create a proposal, which basically proposes what sort of schema the image is using (see figure \ref{fig:RPN}). The image that is passed through the RPN is also used to create feature maps, which create is then passed to the the RoI pooling before being passed to a classifier. In this architecture, the RPN is performing the 'attention' task of FasterRCNN. Attention allows the model to incorporate sequential information into the model (e.g., in a picture of a man on a horse, the model is able to remember that the section of the image with a hat is in the upper-middle area of the whole image). Figure \ref{fig:fasterRCNNArchitecture} shows the entirety of the FasterRCNN architecture.
+
+\newpage
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/fasterRCNN2.png}
@@ -111,6 +115,8 @@ The other model used in this report is the Resnet50 CNN model (\textcite{resnet5
   \captionof{figure}{The Resnet50 CNN Building Block (Layer)(\textcite{resnet50})}
   \label{fig:resnet50}
 \end{minipage}
+
+\newpage
 
 In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to identify whether a parking slot is occupied or empty. Afterwards, parking slot delineation is done using FasterRCNN, which detects cars. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
 
@@ -141,11 +147,78 @@ Figure \ref{fig:pkplot2} shows a sample empty slot and occupied slot found in th
 
 \subsection{Creating Car Detector}
 
-To create the car detector, the pre-trained Resnet50 CNN 
+\subsubsection{Re-Training the Resnet50 CNN Model on PKPlot Dataset}
+To create the car detector, the pre-trained Resnet50 CNN was used. The model was set to train on 70\% of the dataset, and 30\% was kept as the validation set. The classication layer of the model with a different classification layer that predicts two classes, occupied and empty parking spaces. An additional augmented dataset was also created, which involves two changes, rotating and changing the scales of the original image. This would allow the model to be trained on a larger dataset as well as being able to generalize to unseen car images (e.g., if the same car was rotated, the model can still identify it). The model was then re-trained with the new models. Figure \ref{fig:modelTraining} shows the loss and accuracy of the model over 20 epochs. The loss and accuracy converge at around 5-8 epochs, with the model obtaining near perfect accuracy and nearly no loss on both the validation and test data.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/carDetector.png}
+  \captionof{figure}{Loss (up) and Accuracy (down) on Validation and Training Datasets, Re-Trained Model on PKPlot}
+  \label{fig:modelTraining}
+\end{minipage}
+
+\subsubsection{Testing the Model on Barry Street Dataset}
+The same model was then used to identify the same labels (occupied and empty parking spaces) on the Barry Street dataset. Figure \ref{fig:confMatrix} shows the confusion matrix of the re-trained model on the Barry Street dataset. It was able to correctly identify the empty and occupied spaces with high accuracy, correctly identifying 99.2\% of the parking spaces (20.4\% were correctly identified as empty and 78.8\% were correctly identified as occupied). 0.8\% of the predictions were incorrect. The model appears to be able to predict occupied areas more accurately than empty areas (100\% accuracy in classifying occupied targets and 96.5\% accuracy is classifying empty spaces).
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/confMatrix.png}
+  \captionof{figure}{Confusion Matrix of Re-Trained Resnet50 CNN Model on Barry Street Data}
+  \label{fig:confMatrix}
+\end{minipage}
+
+Figure \ref{fig:wrongPred} shows the visualizations of the 21 incorrectly predicted areas, along with their target scores. A target score of greater than 0.5 for each label indicates that it classifies that space as that label (e.g., an occupied score of 0.6763 means that the model predicted that the model is 67.63\% confident that the area is occupied, and the reverse is also true for empty scores). As seen from the figure, occupied scores are generally much higher, meaning that the model was very confident in their wrong predictions of an area being occupied, compared to empty scores, which only has a empty score of 0.58, which does not show high confidence in that prediction.
+
+\newpage
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/wrongPred.png}
+  \captionof{figure}{Visualization of 21 (0.8\% of the total dataset) wrong predictions, along with their target scores}
+  \label{fig:wrongPred}
+\end{minipage}
 
 \subsection{Automatic Delineation of Parking Spaces}
 
+\subsubsection{Re-Training the FasterRCNN on PKPlot}
+
+This section uses the FasterRCNN pre-trained model that was trained on detection of cars in highways from a mounted camera on a car. It has been shown to be able to predict cars in highways well, but on still CCTV images, the performance is questionable. Similar to the re-training done on the Restnet50 CNN, the FasterRCNN is re-trained on the PKPlot dataset to identify cars and parking spaces. The initial model's performance is shown in figure \ref{fig:modelIterations}. The graphs plot the model performance over iterations. The first graph (from top left) shows the training loss, which is close to 0. The second and third graphs show the results of the RPN layer, both accuracy and RMSE. The last two graphs show the overall model's accuracy and RMSE.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/modelIteration.png}
+  \captionof{figure}{Results of Re-Training FasterRCNN on PKPlot}
+  \label{fig:modelIterations}
+\end{minipage}
+
+\subsubsection{Visualizing Re-Trained Model Predictions}
+
+To visualize the prediction results of the model, the predicted areas in which the model classifies as having a car is shown in figure \ref{fig:bStreetPredictions}. The yellow bounding boxes have the confidence scores as well (similar to the scores in \ref{fig:wrongPred}) The prediction confidence are generally quite high, with most correctly identified parking spaces having a confidence of above 0.9, with one exception of the car at the bottom right. However, this car is also cut off and so could contribute to the reduced confidence. Nevertheless, the model was not able to identify all the cars, even in areas where the cars are fully in frame. The car was also unable to correctly identify any empty parking spaces in the image. 
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/modelPredictions.png}
+  \captionof{figure}{FasterRCNN Predictions on the Barry Street}
+  \label{fig:bStreetPredictions}
+\end{minipage}
+
+\subsubsection{Improving Model Prediction Accuracy}
+
+To improve the accuracy of the model to correctly identify more cars, the model was further trained on more frames from the Barry Street CCTV. The predicted bounding boxes on all the frames were clustered and drawn. Figure \ref{fig:clusterBox} shows the clusters represented as scatter points and bounding boxes.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/clusterDot.png}
+  \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/clusterBox.png}
+  \captionof{figure}{Predicted bounding box clusters of all frames, shown as scatter points (left) and boxes (right)}
+  \label{fig:clusterBox}
+\end{minipage}
+
+The bounding boxes (figure \ref{fig:clusterBox} (right)) then had their classification scores averaged and plotted. Figure \ref{fig:clusterAvg} shows the resulting averaged cluster and the corresponding classification scores.
+
+\begin{minipage}{\linewidth}
+  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/clusterAvg.png}
+  \captionof{figure}{Averaged Bounding Boxes and the Corresponding Classification Scores}
+  \label{fig:clusterAvg}
+\end{minipage}
+
 \subsection{Evaluation}
+
+To perform evaluation on 
 
 \subsection{Post-Processing Improvements}
 
