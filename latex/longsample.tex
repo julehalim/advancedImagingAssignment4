@@ -355,6 +355,8 @@ Figure \ref{fig:unimprovedBoxes} shows the plotted bounding boxes of the predict
 
 To visualize the different bounding box sizes, the predicted bounding boxes are plotted. To ensure that the orientation of each bounding boxes are the same, the aspect ratios of each box was calculated. If it was greater than 1, the x and y coordinates are swapped, along with their widths and lengths. This effectively orients each box to be 'vertically' oriented (the length is shorter than the width for each box). The code to plot the boxes and the swaps are shown below. 
 
+\newpage
+
 \begin{lstlisting}[]
 
 figure;
@@ -794,75 +796,3 @@ set(gca, 'YDir', 'reverse');
 \end{lstlisting}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% Theoretical overlap is a parameter that is used in fine registration to indicate how many percent of the points are expected to overlap from one another. Multiple values ranging from 10-100\% were tested. However, 30\% was selected as the final value in order to reduce the final RMS.
-
-% The RMS values show great accuracy, with the coarse registration having an RMS of 1.13cm while the fine registration has 2.27cm of final RMS values.
-
-
-% \begin{minipage}{\linewidth}
-%   \small
-%   \captionof{table}{Table Showing Statistical Information About C2C Distances with MLS as the Reference Point Cloud}
-%   \setlength{\tabcolsep}{3pt} % reduce column spacing
-%   \renewcommand{\arraystretch}{0.8} % reduce row spacing
-%   \label{tab:RMStable2}
-%   \begin{tabular}{@{}llrr@{}}         \toprule
-%   \multicolumn{2}{c}{C2C Distance Statistics }        \\ \toprule{}
-%   &  MLS as Reference Point Cloud \\ \midrule
-%   Mean (m)      & 0.00091 \\
-%   Maximum Value (m)       & 1.55\\
-%   Minimum Value (m)       & 0  \\ 
-%   Max Error (m) & 0.096 \\\bottomrule
-%   \end{tabular}
-% \end{minipage}
-
-% \vspace{2em}
-
-%  Meanwhile, figure \ref{fig:c2cMLS} shows the visualization of the C2C distances of only overlapping points in both point clouds.
-
-%  \newpage
-
-%  \begin{minipage}{\linewidth}
-%   \includegraphics[height=\textheight/2 ,width=\textwidth/1]{figures/MLSasReference.png}
-%   \captionof{figure}{C2C Distance Visualization of MLS as the Reference Point Cloud}
-%   \label{fig:c2cMLS}
-% \end{minipage}
-
-% As seen in figure \ref{fig:c2cMLS} and table \ref{tab:RMStable2}, the areas in which there is only overlap between the TLS and MLS shows very high quality, where there are no outliers involved. This highlights how the TLS is not prone to many outliers. The distances between both point clouds are also on average, about 0.091cm, compared to the C2C distances when outliers were involved, as seen in table \ref{tab:RMStable}, where the means are about 9cm for the area where all distances were considered. This difference could thus be explained by the outliers inflating the means.
-
-% To further investigate these distances, a histogram of the C2C distance was created from the saved text file of the MLS. Figure \ref{fig:c2chistogram} shows the histogram for C2C distances less than or equal to 1 and distances greater than 1. These distances are based on the initial C2C distance calculations in table \ref{tab:RMStable}.
-
-% \begin{minipage}{\linewidth}
-%   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/MLSC2CHistogramWithLine.png}
-%   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/MLSC2CHistogramWithLine2.png}
-%   \captionof{figure}{Probability distribution of distances less than or equal to 1 (left) and distances higher than 1(right). Note that frequency for the left table is multiplied by \num{1e8}}
-%   \label{fig:c2chistogram}
-% \end{minipage}
-
-
-
-% \begin{minipage}{\linewidth}
-%   \includegraphics[height=\textheight/4 ,width=\textwidth/2]{figures/grossError.png}
-%   \captionof{figure}{Area With Large C2C Distances in the MLS Point Cloud}
-%   \label{fig:grossError}
-% \end{minipage}
-
-
-% \end{document}
