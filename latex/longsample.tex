@@ -434,7 +434,7 @@ To improve predicted bounding boxes, a few assumptions was made.
 
 2. The car will take 80\% of the parking space, so the detections, or the predicted bounding box length, will be extended by 25\% (resulting in a length of 99.76 pixels).
 
-The code used is based on the pseudocode provided. A change was the cutoff point of the aspect ratio, which used the averageLength/averageWidth as the cutoff instead of 1 as the pseudocode provided.
+The code used is based on the pseudocode provided. A change was the cutoff point of the aspect ratio, which used the averageLength/averageWidth as the cutoff instead of 1 as the pseudocode provided. This was done to improve the overall average precision.
 
 \begin{lstlisting}[]
 
