@@ -117,9 +117,22 @@ The other model used in this report is the Resnet50 CNN model (\textcite{resnet5
   \label{fig:resnet50}
 \end{minipage}
 
-\newpage
+Figure \ref{fig:resnet50Layers} shows how the described layers fit together in the full Resnet50CNN architecture.
+\begin{minipage}{\linewidth}
+  \includegraphics[width=\textwidth]{figures/resnetLayers.png}
+  \captionof{figure}{The Resnet50CNN complete structure (\textcite{resnetBook})}
+  \label{fig:resnet50Layers}
+\end{minipage}
 
-In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to create a classifier. Afterwards, parking slot delineation is done using FasterRCNN. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
+In this report, I aim to use and investigate a pre-trained FasterRCNN model and Resnet50 CNN model(trained on the PKPlot dataset) to detect cars and delineate parking spaces in a picture of the Barry Street parking lot. The architecture uses Resnet50 CNN as the backbone, while the FasterRCNN provides the PRN and feature map pooling described in figure \ref{fig:fasterRCNNArchitecture}. The full architecture is found in figure \ref{fig:fullArchitecture}
+
+\begin{minipage}{\linewidth}
+  \includegraphics[width=\textwidth]{figures/fullArchitecture.png}
+  \captionof{figure}{The complete FasterRCNN architecture using the Resnet50 CNN as the backbone (\textcite{resnetBook})}
+  \label{fig:fullArchitecture}
+\end{minipage}
+
+The software used will be MATLAB 2020a, along with additional toolboxes such as the deep learning toolbox. The methodology of this begins with a visualization of the dataset, before using a pre-trained Resnet50 CNN classifier to create a classifier. Afterwards, parking slot delineation is done using FasterRCNN. The dataset for this step involves images of the parking slot and bounding boxes, which identifies the space in which an object is identified (see figure \ref{fig:exampleDetection}, where cars and human areas and identified using bounding boxes).
 
 These results will then be evaluated by calculating recall and precision. These metrics are calculated as 
 
@@ -419,9 +432,9 @@ To improve predicted bounding boxes, a few assumptions was made.
 
 1. The width and length of each parking slot is constant, thus the average length and width calculated above will be used as the width and length of each parking space.
 
-2. The car will take 80\% of the parking space, so the detections, or the predicted bounding box length, will be extended by 25\%.
+2. The car will take 80\% of the parking space, so the detections, or the predicted bounding box length, will be extended by 25\% (resulting in a length of 99.76 pixels).
 
-The code used is based on the pseudocode provided.
+The code used is based on the pseudocode provided. A change was the cutoff point of the aspect ratio, which used the averageLength/averageWidth as the cutoff instead of 1 as the pseudocode provided.
 
 \begin{lstlisting}[]
 
@@ -462,8 +475,6 @@ end
 \end{lstlisting}
 
 The resulting new boxes were then plotted, with predicted boxes with an aspect ratio greater than average aspect ratio being colored green, aspect ratios being less than average aspect ratios colored cyan, and the ground truth bounding boxes being colored red. Figure \ref{fig:bboxplot1} shows this plot.
-
-\newpage
 
 \begin{minipage}{\linewidth}
   \includegraphics[height=\textheight/4,width=\textwidth/2]{figures/finalBbox1.png}
@@ -540,7 +551,7 @@ The resulting plot is shown in figure \ref{fig:finalPlot}.
 \newpage
 
 \begin{minipage}{\linewidth}
-  \includegraphics[height=\textheight/2,width=\textwidth/1]{figures/finalPrecRecPlot.png}
+  \includegraphics[]{figures/finalPrecRecPlot.png}
   \captionof{figure}{Plotted Recall vs Precision for Post-Processed Bounding Boxes}
   \label{fig:finalPlot}
 \end{minipage}
@@ -564,7 +575,9 @@ While detection accuracy after providing the model with more data is better, the
 To improve the precision and recall of each bounding boxes, the improvements were made. The results will be discussed in the following section.
 
 \subsection{Improvement Based on Assumptions}
-The average precision decreased by about 43\%, which shows that the post-processed bounding boxes more accurately fit the annotated ground truth. The general trend of recall vs precision is also present in the post-processed plot (see figure \ref{fig:finalPlot}). 
+The average precision increased by about 43\% to about 0.804. This means that about 80\% of the detected parking spaces were correctly detected, including their overlapping areas with the ground truth. The recall also generally improved, as it now ranges up to 0.8, compared to preprocessing where it ranged up to 0.6. This shows that the model detected less false positive bounding box areas. This means that the around 80\% of the ground truth parking spaces were correctly detected, and only about 20\% were missed.
+
+This highlights how post-processed bounding boxes more accurately fit the annotated ground truth. The general trend of recall vs precision is also present in the post-processed plot (see figure \ref{fig:finalPlot}). The increased precision means that the post-processed model.
 
 To further investigate how the predicted boxes compare to the ground truth, figures \ref{fig:bboxplot1} and \ref{fig:bboxplot2} was created. In contrast to figure \ref{fig:unimprovedBoxes}, the post-processed boxes more closely resemble the ground truths. However, seeing figure \ref{fig:bboxplot1} shows that not all the parking spot orientations were identified. For example, two of the blue boxes on the bottom are vertically oriented, but the ground truth was that it should be a horizontal parking spot. This results in these predicted boxes having increased deviation from the ground truth. The bottom left parking spot was also much smaller than the others in the same row, which could be attributed to the image being cut off at that point, as seen in figure \ref{fig:bStreetPredictions}. 
 
