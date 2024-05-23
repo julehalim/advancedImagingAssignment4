@@ -54,7 +54,7 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-
+% add some stuff about how the Resnet50 is the backbone of fasterRCNN; use more images from the paper they give
 Recent developments in data has undergone significant changes from data processing into machine learning due to increased volumes of readily available data (\textcite{KHAN20201444}). The introduction of image-based neural network architecture has allowed the field of computer vision to flourish. Computer vision leverages the power of machine learning to derive meaningful information from visual data, which allows them to take actions and recommendations when they detect issues. Powerful advances in machine learning such as the widely popular transformer model that Chat-GPT is based on has also been adapted to be trained on visual information (\textcite{elnouby2021training}). Figure \ref{fig:representationNeuralNetwork} provides a representation of a neural network, which consists of multiple layers. The input layer is the initial data, and hidden layers calculate the weights of each of these data and propagates them forward to other hidden layers. Finally, the output layer provides probabilities of the desired output (e.g., some classification label).
 
 \begin{minipage}{\linewidth}
@@ -422,7 +422,7 @@ To improve predicted bounding boxes, a few assumptions was made.
 2. The car will take 80\% of the parking space, so the detections, or the predicted bounding box length, will be extended by 25\%.
 
 The code used is based on the pseudocode provided.
-
+%write about how i tested different aspect ratio boundaries and found avgL/avgW to be the highest.
 \begin{lstlisting}[]
 
 newBoxes = zeros(size(unrotatedClassifiedMeans));
